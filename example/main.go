@@ -13,7 +13,8 @@ func main() {
 	//simpleHandlerExample()
 	//fileExample()
 	//zincsearchExample()
-	openObserveExample()
+	//openObserveExample()
+	wasmExample() // before run, set GOOS=js GOARCH=wasm
 }
 
 func sharpHandlerExample() {
@@ -104,4 +105,19 @@ func openObserveExample() {
 	slog.Warn("warn")
 	slog.Error("error")
 	//time.Sleep(1 * time.Second)
+}
+
+func wasmExample() {
+	opts := &slog.HandlerOptions{
+		AddSource:   true,
+		Level:       slog.LevelDebug,
+		ReplaceAttr: nil,
+	}
+	handler := sharp.NewSimpleHandler(sharp.NewWasmWriter(), opts, "2006-01-02T15:04:05.000", true)
+
+	slog.SetDefault(slog.New(handler))
+	slog.Debug("debug")
+	slog.Info("info")
+	slog.Warn("warn")
+	slog.Error("error")
 }
