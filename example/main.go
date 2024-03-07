@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"log/slog"
 	"os"
 	"sharp"
@@ -8,7 +9,8 @@ import (
 
 func main() {
 	//sharpHandlerExample()
-	simpleHandlerExample()
+	//simpleHandlerExample()
+	fileExample()
 }
 
 func sharpHandlerExample() {
@@ -19,9 +21,8 @@ func sharpHandlerExample() {
 	}
 	handler1 := slog.NewTextHandler(os.Stdout, opts)
 	handler2 := slog.NewJSONHandler(os.Stdout, opts)
-	handler3 := sharp.NewSimpleHandler(os.Stdout, opts, "2006-01-02T15:04:05.000", true)
 
-	handler := sharp.NewSharpHandler(handler1, handler2, handler3)
+	handler := sharp.NewSharpHandler(handler1, handler2)
 
 	slog.SetDefault(slog.New(handler))
 	slog.Debug("debug")
@@ -37,6 +38,24 @@ func simpleHandlerExample() {
 		ReplaceAttr: nil,
 	}
 	handler := sharp.NewSimpleHandler(os.Stdout, opts, "2006-01-02T15:04:05.000", true)
+
+	slog.SetDefault(slog.New(handler))
+	slog.Debug("debug")
+	slog.Info("info")
+	slog.Warn("warn")
+	slog.Error("error")
+}
+
+func fileExample() {
+	opts := &slog.HandlerOptions{
+		AddSource:   true,
+		Level:       slog.LevelDebug,
+		ReplaceAttr: nil,
+	}
+
+	w := sharp.NewFileRotateWriter("./var/log/app.log", 50, 10, 30)
+	ws := io.MultiWriter(os.Stdout, w)
+	handler := sharp.NewSimpleHandler(ws, opts, "2006-01-02T15:04:05.000", false)
 
 	slog.SetDefault(slog.New(handler))
 	slog.Debug("debug")
