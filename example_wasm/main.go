@@ -3,7 +3,7 @@ package main
 import (
 	"log/slog"
 
-	"sharp"
+	"github.com/matrix14159/sharp"
 )
 
 // run steps:

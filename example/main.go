@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"os"
 
-	"sharp"
+	"github.com/matrix14159/sharp"
 )
 
 func main() {
