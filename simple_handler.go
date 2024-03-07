@@ -1,7 +1,7 @@
 package sharp
 
 import (
-	"github.com/lmittmann/tint"
+	"github.com/matrix14159/tint"
 	"io"
 	"log/slog"
 )
