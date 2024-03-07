@@ -4,14 +4,16 @@ import (
 	"io"
 	"log/slog"
 	"os"
+
 	"sharp"
 )
 
 func main() {
-	sharpHandlerExample()
-	simpleHandlerExample()
-	fileExample()
-	zincsearchExample()
+	//sharpHandlerExample()
+	//simpleHandlerExample()
+	//fileExample()
+	//zincsearchExample()
+	openObserveExample()
 }
 
 func sharpHandlerExample() {
@@ -73,6 +75,26 @@ func zincsearchExample() {
 	}
 
 	w := sharp.NewZincsearchWriter("http://localhost:4080", "app.log", "admin", "admin", true)
+	ws := io.MultiWriter(os.Stdout, w)
+	handler := slog.NewJSONHandler(ws, opts)
+
+	slog.SetDefault(slog.New(handler))
+	slog.Debug("debug")
+	slog.Info("info")
+	slog.Warn("warn")
+	slog.Error("error")
+	//time.Sleep(1 * time.Second)
+}
+
+func openObserveExample() {
+	opts := &slog.HandlerOptions{
+		AddSource:   true,
+		Level:       slog.LevelDebug,
+		ReplaceAttr: nil,
+	}
+
+	w := sharp.NewOpenObserveWriter("http://localhost:5080", "roostore", "sharp",
+		"root@qq.com", "admin", true)
 	ws := io.MultiWriter(os.Stdout, w)
 	handler := slog.NewJSONHandler(ws, opts)
 
