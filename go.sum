@@ -12,5 +12,7 @@ github.com/matrix14159/tint v0.6.0 h1:dXte0cXZURKkMA1paaHOxc1PClzuZJWpd8nTYaaU/c
 github.com/matrix14159/tint v0.6.0/go.mod h1:d4QlkYrmTelX/vSdN9LaEm5zyC9S7xdBgq8Dd9pi2zc=
 github.com/matrix14159/tint v0.7.0 h1:H+GUVsWQyZNX2jaTwjc1ZMvpqk9ArTsHIeDfLmo3JK8=
 github.com/matrix14159/tint v0.7.0/go.mod h1:d4QlkYrmTelX/vSdN9LaEm5zyC9S7xdBgq8Dd9pi2zc=
+github.com/matrix14159/tint v0.8.0 h1:gChM5+RRba6mqO9KTKJciOHEGNTvUxh1cWVmra+V4Wo=
+github.com/matrix14159/tint v0.8.0/go.mod h1:d4QlkYrmTelX/vSdN9LaEm5zyC9S7xdBgq8Dd9pi2zc=
 github.com/natefinch/lumberjack v2.0.0+incompatible h1:4QJd3OLAMgj7ph+yZTuX13Ld4UpgHp07nNdFX7mqFfM=
 github.com/natefinch/lumberjack v2.0.0+incompatible/go.mod h1:Wi9p2TTF5DG5oU+6YfsmYQpsTIOm0B1VNzQg9Mw6nPk=
